@@ -1,41 +1,41 @@
-// Page.tsx
 import React from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { View, ImageBackground, ScrollView, SafeAreaView } from 'react-native';
 
 import { CustomHeader } from './CustomHeader';
 import styles from '@/constants/styles';
 import { FontsLoader } from '../components/Fonts';
 
-import { Card } from '@/components/Cards';
-import { Row } from '@/components/Row';
-
-interface PageProps {
-  title: string;
-  content: string;
-}
-
-export const Page = ({ title, content }: { title: string; content?:any; }) => {
+export const Page = ({ title, content }: {title?:any, content?:any}) => {
   return (
-    <FontsLoader>
-      <View>
+    <SafeAreaView style={styles.container}>
+      <FontsLoader>
         <ImageBackground
-          source={require('@/assets/images/background.png')}  // Provide the image source
+          source={require('@/assets/images/background.png')}
           style={styles.imageBackground}
         >
-          {/* Use CustomHeader */}
+          {/* Custom Header */}
           <CustomHeader
-            title = { title } 
-            onPress = { title === "Home" ? "" : () => console.log('Back pressed')}
-            rightElement = {title === "Home" ? "" : "Options" }
+            title={title}
+            onPress={title === 'Home' ? undefined : () => console.log('Back pressed')}
           />
 
-          {/* Page Content */}
-          <View style={styles.page}>
-              { content }
-          </View>
-        </ImageBackground>
+          {/* Scrollable Content */}
+          <ScrollView
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingHorizontal: 16,
+              paddingVertical: 10,
+            }}
+          >
+            <View style={styles.page}>
+              {content}
+            </View>
+          </ScrollView>
 
-      </View>
-    </FontsLoader>
+          {/* Footer */}
+          <View style={styles.footer}></View>
+        </ImageBackground>
+      </FontsLoader>
+    </SafeAreaView>
   );
 };

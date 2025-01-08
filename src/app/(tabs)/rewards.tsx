@@ -1,9 +1,10 @@
 import { Text, View, StyleSheet } from 'react-native';
 import styles from '@/constants/styles';
-import HomePage from '@/app/home';
+import Rewards from '@/app/rewards';
 
-export default function HomeScreen() {
+export default function RewardsScreen() {
   return (
-    <HomePage/>
-  ); 
+    <Rewards/>
+  );
 }
+ 

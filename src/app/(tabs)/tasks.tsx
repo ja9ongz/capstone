@@ -1,9 +1,10 @@
 import { Text, View, StyleSheet } from 'react-native';
 import styles from '@/constants/styles';
-import HomePage from '@/app/home';
+import TasksPage from '../tasks';
 
-export default function HomeScreen() {
+export default function TasksScreen() {
   return (
-    <HomePage/>
-  ); 
+    <TasksPage/>
+  );
 }
+ 

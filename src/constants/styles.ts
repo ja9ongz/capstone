@@ -35,13 +35,11 @@ export const Fonts = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Ensure the container is taking full space
-    justifyContent: 'center',
-    alignItems: 'center',
     fontFamily: 'OpenSans_400Regular, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    ...Colors.appBg,
-    width: '100%'
+    flex: 1, // Ensure the container takes full screen height
+    paddingHorizontal: 16,  // Optional: Add padding for better spacing
   },
+
   imageBackground: {
     flex: 1,
     width: '100%',
@@ -50,28 +48,82 @@ const styles = StyleSheet.create({
   },
 
   page:{
-    flexDirection: 'row',
+    flexDirection: 'column',
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    paddingVertical:15,
     paddingHorizontal: 0,
+    width: Dimensions.get('window').width,
   },
 
+  content: {
+    flexDirection: 'row',
+  },
   header: { 
-    padding: 15,
+    paddingVertical: 15,
   },
 
   row:{
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'center', // Ensure that items align properly without excess space
+    alignItems: 'center',
+    marginVertical: 0, // Ensure no vertical margin
+    paddingVertical: 10, 
+    paddingHorizontal: 15,
+    flexWrap: 'wrap',
+    width:'100%'
+  },
+
+  column:{
+    flex:1,
+    flexDirection:'column',
     width:'100%',
-    alignContent: 'center',
-  
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 60, // Adjust based on bottom nav height
+  },
+
+  smallHeader: {
+    fontSize:16,
+    fontWeight: 'regular',
+    color: '#666',
+    textAlign: 'left',
   },
 
   card: {
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    alignContent: 'flex-start',
+    textAlign: 'center',
+    justifyContent: 'flex-start',
+  },
+
+  cardRight: {
+    ...Colors.darkBtn,
+    padding: 8,
+    height: 130,
+    width:'46%',
+    marginLeft: 10
+  },
+
+  cardLeft:{
+    ...Colors.lightBtn,
+    padding: 8,
+    height: 130,
+    width:'46%',
+    marginRight: 10,
+  },
+
+
+  cardWhite: {
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
@@ -80,37 +132,55 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     alignContent: 'center',
     textAlign: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     marginHorizontal:10,
-    width: '50%'
-    
+    width:'100%',
+
   },
-  
+
+  descriptionText: {
+    fontSize: 14,
+    color: '#000',
+    flexShrink: 1, // Prevent long text from stretching the card
+  },
+  chartContainer: {
+    height: 200, // Limit the height of the container
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   cardIcon: {
-    marginHorizontal:5,
+    marginHorizontal:3,
   },
 
   cardTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '700',
     textTransform: 'uppercase', 
     textAlign: 'center'
   },
 
   cardTitleLeft: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: '600',
     textTransform: 'uppercase', 
     textAlign: 'center',
     ...Colors.darkPurpleText
   },
 
   cardTitleRight:{
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: '600',
     textTransform: 'uppercase', 
     textAlign: 'center',
     ...Colors.lightPurpleText
+  },
+
+  miniCardSubText: {
+    fontSize: 14,
+    fontWeight: '400',
+    textAlign: 'left',
+    lineHeight: 20,
   },
 
   cardSubText: {
@@ -118,9 +188,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
+
   cardDescLeft: {
     fontSize: 36,
-    marginTop: 10,
     fontWeight: '900',
     width:'100%',
     textAlign: 'center',
@@ -129,7 +199,6 @@ const styles = StyleSheet.create({
 
   cardDescRight: {
     fontSize: 36,
-    marginTop: 10,
     fontWeight: '900',
     width:'100%',
     textAlign: 'center',
@@ -138,28 +207,31 @@ const styles = StyleSheet.create({
 
   cardDescription: {
     fontSize: 36,
-    marginTop: 10,
     color: '#333',
     fontWeight: '900',
     width:'100%',
     textAlign: 'center'
   },
-  cardRight: {
-    ...Colors.darkBtn,
-    paddingVertical: 25,
-    paddingHorizontal:15
-  },
-
-  cardLeft:{
-    ...Colors.lightBtn,
-    paddingVertical: 25,
-    paddingHorizontal:15
-  },
-
+ 
   headerText: { 
     ...Colors.headerText,
     fontSize: 24, 
-    textAlign: 'center',
+    textAlign: 'left',
+    fontFamily: 'Inter_800ExtraBold', 
+  },
+
+  cardHeaderText : {
+    ...Colors.headerText,
+    fontSize: 24, 
+    textAlign: 'left',
+    fontFamily: 'Inter_800ExtraBold', 
+    padding:15
+  },
+
+  headerTextWhite: {
+    color:'white',
+    fontSize: 24, 
+    textAlign: 'left',
     fontFamily: 'Inter_800ExtraBold', 
   },
 
@@ -169,7 +241,7 @@ const styles = StyleSheet.create({
   },
 
 
-  footer: { backgroundColor: '#6200EE', padding: 8, alignItems: 'center' },
+  footer: { padding: 8, alignItems: 'center' },
   text: {
     fontSize: 20,
   },
@@ -324,6 +396,400 @@ const styles = StyleSheet.create({
     height: 10,
     backgroundColor: '#6C63FF', // Active dot color
   },
+
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  required: {
+    color: 'red',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    fontSize: 16,
+  },
+  textarea: {
+    height: 100,
+    textAlignVertical: 'top',
+  },
+  optionsContainer: {
+    flexDirection: 'column',
+  },
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  radioCircle: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#6C63FF',
+    marginRight: 10,
+  },
+  radioSelected: {
+    backgroundColor: '#6C63FF',
+  },
+  checkboxOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  checkboxBox: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderColor: '#6C63FF',
+    marginRight: 10,
+  },
+  checkboxSelected: {
+    backgroundColor: '#6C63FF',
+  },
+  tabLabel: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  focusedTabLabel: {
+  },
+
+  tabContainer: {
+    borderWidth: 0,
+    height: 70,
+    justifyContent: 'center'
+  },
+
+  tabBar: {
+    height:70
+  },
+  tasksTabStyle: {
+  },
+  circle: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    backgroundColor: '#1573FF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // Center the icon inside the circle
+    borderWidth: 7,  // Optional white border around the circle
+    borderColor: '#FFFFFF',
+    transform: [{ translateY: -10 }],  
+  },
+
+  cardNormalTitle:{
+    color: '#333'
+  },
+  lineStyle:{
+    borderWidth: 0.5,
+    borderColor:'#dadada',
+    width: '100%',
+    marginVertical: 20
+  },
+
+  verticalLine: {
+    position: 'absolute',
+    height: '100%', // Full height of the chart container
+    width: 1, // Thickness of the line
+    backgroundColor: '#dadada', // Line color
+    left: '50%', // Center the line (adjust based on your requirement)
+  },
+
+  graphContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
+    padding: 15
+  },
+  dot: {
+    height: 10,
+    width: 10,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  legendContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  legendRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 5,
+    marginBottom: 5,
+  },
+  legendText: {
+    fontSize: 12,
+    color: 'black',
+  },
+  centerLabel: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  centerText: {
+    fontSize: 22,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  centerSubText: {
+    fontSize: 14,
+    color: 'white',
+  },
+
+  blueTag: {
+    backgroundColor: '#DEEDFF',
+    color:'#376BA7',
+    fontWeight: '600',
+    paddingHorizontal: 5,
+    borderRadius:8,
+    marginVertical: 8,
+    textAlign:'center',
+    fontSize: 14,
+  }, 
+
+  greenTag: {
+    backgroundColor: '#DEFEE4',
+    color:'#3F7E4B',
+    fontWeight: '600',
+    paddingHorizontal: 5,
+    borderRadius:8,
+    marginVertical: 8,
+    textAlign:'center',
+    fontSize: 14,
+  }, 
+
+  purpleTag: {
+    backgroundColor: '#EDDEFE',
+    color:'#735990',
+    fontWeight: '600',
+    paddingHorizontal:5 ,
+    borderRadius:8,
+    marginVertical: 8,
+    textAlign:'center',
+    fontSize: 14,
+  },
+
+  addMargin: {
+    marginHorizontal: 8
+  },
+  
+  addRightMargin:{
+    marginRight:8,
+  },
+
+  profileImg: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#CDD9E3',
+    marginRight: 10,
+  },
+
+  profileName: {
+    color:'#8EF6FF'
+  },
+
+  LinkContainer:{
+    paddingBottom:20,
+  },
+
+  linkText: {
+    color: '#4D81E7',
+    fontSize: 16,
+    textTransform: 'capitalize',
+    fontFamily: 'OpenSans_400Regular',
+    flexDirection: 'row',
+  },
+
+  linkIcon:{
+    color: '#4D81E7',
+    marginRight: 8,
+    fontSize: 16,
+    position: 'relative',
+    top: 5
+  },
+
+  headerRow:{
+    paddingVertical:25,
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent:'space-evenly',
+    alignItems:'center',
+    alignContent:'space-evenly'
+  },
+
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between', // Distribute items evenly
+    paddingHorizontal: 15,
+    width:'100%',
+  },
+
+  LeftAlign :{
+    flexDirection: 'row',
+    textAlign:'left',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignContent: 'flex-start',
+    width:'90%'
+  },
+
+  backButton: {
+    flex: 1, // Reserve space for alignment
+    alignItems: 'flex-start',
+  },
+  headerTitle: {
+    flex: 3, // Center column
+    textAlign: 'center', // Ensure title is centered
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  iconButton: {
+    flex: 1, // Reserve space for alignment
+    alignItems: 'flex-end',
+  },
+
+  backgroundCard: {
+    backgroundColor:'white',
+    borderRadius:20,
+    paddingVertical:15,
+    paddingHorizontal: 25,
+  }, 
+
+  rewardRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', // Ensures equal spacing between items
+    alignItems: 'center', // Align items vertically
+    borderRadius: 8,
+    alignContent: 'center',
+    marginVertical: 20
+  },
+
+  iconBg: {
+    width:40,
+    height: 40,
+    justifyContent:'center',
+    alignContent: 'center',
+    alignItems:'center',
+    textAlign:'center',
+    marginRight: 8
+  },
+
+  rewardIcon: {
+    marginRight: 8,
+  },
+  
+  saverType: {
+    flexDirection: 'row', // Arrange items in a horizontal row
+    alignItems: 'center', // Vertically center align items
+    justifyContent: 'center', // Center content horizontally if needed
+    flex: 1, // Equal space allocation
+  },
+  
+  saverText: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontFamily: 'Inter_700Bold',
+    fontSize: 16,
+    marginLeft: 5, // Add spacing between icon and text
+  },
+  
+  
+  rewardCard : {
+    backgroundColor: 'white',
+    borderRadius: 20,
+    height:'auto',
+    paddingHorizontal:10,
+    paddingVertical:15,
+    justifyContent:'flex-start',
+    alignContent: 'flex-start',
+  },
+  
+  rewardMiniCard: {
+    borderWidth: 1,
+    borderColor: '#CDD9E3',
+    paddingVertical: 15,
+    borderRadius: 15,
+    justifyContent: 'flex-start',
+    alignContent: 'flex-start',
+    textAlign: 'left',
+    flexWrap: 'wrap', // Allow wrapping of child elements
+    width: '100%', // Ensure the card doesn't exceed its container
+    backgroundColor:'white'
+  },
+
+  rewardMiniCardSmall:{
+    flex:1, 
+    marginHorizontal:5,
+  },
+
+
+  rewardMiniCardRow : {
+    flexDirection: 'row',
+    justifyContent: 'flex-start', // Ensure that items align properly without excess space
+    alignItems: 'center',
+    marginVertical: 0, // Ensure no vertical margin
+    paddingVertical: 10, 
+    paddingHorizontal: 15,
+    flexWrap: 'wrap',
+    width:'100%',
+  },
+
+  rewardImg:{
+    borderColor:'white',
+    borderWidth: 5,
+    width:60,
+    height:60,
+  },
+
+  stacked: {
+    position:'absolute',
+  },
+
+  rewardProfilecounter: {
+    backgroundColor: '#FFB057',
+    width:60,
+    height:60,
+    borderWidth:5,
+    borderColor: 'white',
+    color:'white',
+    fontWeight: '700',
+    fontSize: 18,
+    fontFamily: 'Inter_600SemiBold',
+    borderRadius:60,
+    justifyContent: 'center',
+    alignContent: 'center',
+    textAlign: 'center'
+  },
+
+  rewardTag : {
+    backgroundColor:'#000',
+    color:'#8EF6FF',
+    paddingHorizontal:12,
+    paddingVertical:8,
+    borderRadius:24,
+  },
+
+  ProfileIconsContainer: {
+    flexDirection: 'row',
+    position: 'relative',
+    minHeight: 60,
+  },
+
+  rewardDate :{
+    color:'#666',
+    fontSize: 12,
+    fontWeight: '500',
+    fontFamily: 'Inter_500Medium'
+  },
+
 });
 
 export default styles;

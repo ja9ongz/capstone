@@ -9,3 +9,11 @@ export const Row = ({ children }) => {
     </View>
   );
 };
+
+export const Column = ({ children }) => {
+  return (
+    <View style={styles.column}>
+      {children} 
+    </View>
+  );
+};

@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import styles from '@/constants/styles';
+import { useRouter } from 'expo-router';
 
 export default function SplashScreen() {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Stepper');
+      router.push('home')
     }, 3000); // 3 seconds delay
 
     return () => clearTimeout(timer);
-  }, [navigation]);
+  }, [router]);
 
   return (
     <View style={styles.splashBg}>

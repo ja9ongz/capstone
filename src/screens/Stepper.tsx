@@ -1,7 +1,7 @@
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 import React, { useState, useRef } from 'react';
 import Swiper from 'react-native-swiper'
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 import styles from '@/constants/styles';
 
@@ -27,7 +27,7 @@ const CustomButton = ({ title, onPress, style, dark, long }: { title: string; on
 );
 
 export const Stepper = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const swiperRef = useRef<Swiper>(null);
 
   const goToNextSlide = () => {
@@ -48,7 +48,7 @@ export const Stepper = () => {
           <Text style={styles.pageTitle}>Save money, {'\n'}track with ease</Text>
           <Text style={styles.pageSubtitle}>Have all your finances in one place!</Text>
           <View style={styles.buttonContainer}>
-            <CustomButton title="Skip" onPress={() => navigation.navigate('Home')} style={styles.lightBtn} />
+            <CustomButton title="Skip" onPress={() => router.push('home')} style={styles.lightBtn} />
             <CustomButton title="Next" onPress={ goToNextSlide } style={styles.darkBtn} dark />
           </View>
         </View>
@@ -58,7 +58,7 @@ export const Stepper = () => {
           <Text style={styles.pageTitle}>Stay organized, {'\n'}manage simply</Text>
           <Text style={styles.pageSubtitle}>Manage your money and {'\n'}invest with just one tap</Text>
           <View style={styles.buttonContainer}>
-            <CustomButton title="Skip" onPress={() => navigation.navigate('Home')} style={styles.lightBtn} />
+            <CustomButton title="Skip" onPress={() => router.push('home')} style={styles.lightBtn} />
             <CustomButton title="Next" onPress={ goToNextSlide } style={styles.darkBtn} dark />
           </View>
         </View>
@@ -68,7 +68,7 @@ export const Stepper = () => {
           <Text style={styles.pageTitle}>Smart tools {'\n'}for smart saving</Text>
           <Text style={styles.pageSubtitle}>Reach your financial goal</Text>
           <View style={styles.buttonContainer}>
-            <CustomButton title="Get Started" onPress={() => navigation.navigate('Home')} style={styles.longBtn} dark />
+            <CustomButton title="Get Started" onPress={() => router.push('home')} style={styles.longBtn} dark />
           </View>
         </View>
       </Swiper>
