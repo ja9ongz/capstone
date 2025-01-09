@@ -1,10 +1,9 @@
 import { Text, View, StyleSheet } from 'react-native';
 import styles from '@/constants/styles';
+import SettingsPage from '../settings';
 
 export default function SettingsScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>About screen</Text>
-    </View>
+    <SettingsPage />
   );
 }

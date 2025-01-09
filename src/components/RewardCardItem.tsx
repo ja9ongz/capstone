@@ -48,7 +48,7 @@ export const RewardMiniCard = ({ children, small } : {children?:any, small?:bool
 export const RewardDate = ({ date } : {date?:any}) => {
   return (
     <>
-      <Ionicons name="calendar-outline" style={styles.rewardIcon} size={18} color="#666" /> 
+      <Ionicons name="calendar-outline" style={styles.rewardIcon} size={15} color="#666" /> 
       <Text style={styles.rewardDate}>{date}</Text>
     </>
   );

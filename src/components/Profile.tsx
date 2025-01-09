@@ -73,6 +73,20 @@ export const ProfileIcons = ({img, className} : {img?:any, className?:any, }) =>
     );
 };
 
-export const Profile = ({ img, name, email}: { img?:any; name:string; email:string}) => {
-   
+export const ProfileListItem = ({ img, name, email}: { img?:any; name:string; email:string}) => {
+   return(
+      <View style={styles.profileList}>
+        <Row>
+            <Image
+              style={[styles.profileImg]}
+              source={typeof img === 'string' ? { uri: img } : img} // Handle URI or local asset
+            />
+
+            <View style={styles.profileWrap}>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.email}>{email}</Text>
+            </View>
+        </Row>
+      </View>
+   )
 };

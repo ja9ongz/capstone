@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, Text } from 'react-native';
 
@@ -34,18 +34,16 @@ export default function TabLayout() {
       }}
       />
 
-      <Tabs.Screen
-        name="tasks"
+      <Tabs.Screen name="tasks"
         options={{
           title: 'Tasks',
           tabBarLabelStyle: styles.tabLabel,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ color }) => 
             <View style={styles.circle}>
-              <Ionicons name="add-outline" size={28} color="#FFFFFF" />
-            </View>
-          ),
-          tabBarLabel: () => null, 
-          tabBarStyle: styles.tasksTabStyle,
+                <Icon name="calendar-plus" size={30} color="#fff" />
+            </View>,
+          tabBarStyle: styles.tabContainer,
+          tabBarLabel: () => null,
         }}
       />
 

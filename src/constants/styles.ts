@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     fontFamily: 'OpenSans_400Regular, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     flex: 1, // Ensure the container takes full screen height
-    paddingHorizontal: 16,  // Optional: Add padding for better spacing
   },
 
   imageBackground: {
@@ -52,7 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    paddingHorizontal: 0,
     width: Dimensions.get('window').width,
   },
 
@@ -67,6 +65,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center', // Ensure that items align properly without excess space
     alignItems: 'center',
+    alignContent: 'center',
     marginVertical: 0, // Ensure no vertical margin
     paddingVertical: 10, 
     paddingHorizontal: 15,
@@ -81,6 +80,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  taskHeader:{
+    alignItems:'flex-start',
+    flex: 1,
+  },
+
+  linkButton: {
+    backgroundColor: '#B07CEB', 
+    borderRadius: 60,         
+    justifyContent: 'center',  
+    alignItems: 'center', 
+    width:50,
+    height:50,
+  },
+
+  addButton:{
+    alignItems:'flex-end',
+    marginRight:10,
+    position: 'relative',
+    top:10,
   },
 
   scrollContent: {
@@ -135,6 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal:10,
     width:'100%',
+    padding:25,
 
   },
 
@@ -189,6 +210,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
+  cardSubTextWhite: {
+    fontSize: 16,
+    color:'white',
+    fontWeight: '500',
+    textAlign: 'left',
+    paddingHorizontal:15,
+    lineHeight:20,
+    paddingBottom:15,
+  },
+
   cardDescLeft: {
     fontSize: 36,
     fontWeight: '900',
@@ -226,6 +257,15 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontFamily: 'Inter_800ExtraBold', 
     padding:15
+  },
+
+  cardHeaderTextWhite : {
+    color:'white',
+    fontSize: 24, 
+    textAlign: 'left',
+    fontFamily: 'Inter_800ExtraBold', 
+    paddingHorizontal:15,
+    paddingTop:15,
   },
 
   headerTextWhite: {
@@ -405,51 +445,7 @@ const styles = StyleSheet.create({
   required: {
     color: 'red',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    fontSize: 16,
-  },
-  textarea: {
-    height: 100,
-    textAlignVertical: 'top',
-  },
-  optionsContainer: {
-    flexDirection: 'column',
-  },
-  radioOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  radioCircle: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: '#6C63FF',
-    marginRight: 10,
-  },
-  radioSelected: {
-    backgroundColor: '#6C63FF',
-  },
-  checkboxOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  checkboxBox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    borderColor: '#6C63FF',
-    marginRight: 10,
-  },
-  checkboxSelected: {
-    backgroundColor: '#6C63FF',
-  },
+
   tabLabel: {
     fontSize: 16,
     textAlign: 'center',
@@ -467,7 +463,9 @@ const styles = StyleSheet.create({
     height:70
   },
   tasksTabStyle: {
+
   },
+
   circle: {
     width: 70,
     height: 70,
@@ -478,7 +476,8 @@ const styles = StyleSheet.create({
     // Center the icon inside the circle
     borderWidth: 7,  // Optional white border around the circle
     borderColor: '#FFFFFF',
-    transform: [{ translateY: -10 }],  
+    position:'relative',
+    top: -5,
   },
 
   cardNormalTitle:{
@@ -588,15 +587,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#CDD9E3',
     marginRight: 10,
+    justifyContent:'flex-start',
   },
 
   profileName: {
     color:'#8EF6FF'
   },
 
-  LinkContainer:{
-    paddingBottom:20,
-  },
 
   linkText: {
     color: '#4D81E7',
@@ -628,6 +625,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between', // Distribute items evenly
     paddingHorizontal: 15,
+    paddingVertical: 20,
     width:'100%',
   },
 
@@ -644,6 +642,7 @@ const styles = StyleSheet.create({
     flex: 1, // Reserve space for alignment
     alignItems: 'flex-start',
   },
+
   headerTitle: {
     flex: 3, // Center column
     textAlign: 'center', // Ensure title is centered
@@ -706,7 +705,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     height:'auto',
-    paddingHorizontal:10,
+    paddingHorizontal:25,
     paddingVertical:15,
     justifyContent:'flex-start',
     alignContent: 'flex-start',
@@ -785,9 +784,213 @@ const styles = StyleSheet.create({
 
   rewardDate :{
     color:'#666',
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '500',
     fontFamily: 'Inter_500Medium'
+  },
+
+  progressContainer: {
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textContainer: {
+    position: 'absolute',
+    top: '35%',
+    left: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textValue: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+
+  textSuffix: {
+    fontSize: 24,
+    fontWeight: 'normal',
+    color: 'black',
+  },
+
+  inputContainer: {
+    marginVertical: 15,  
+    flex: 1,
+    justifyContent: 'center',
+  },
+  
+  toggleContainer: {
+    flexDirection: 'row',
+    marginVertical: 25,  // Adds space between toggle buttons
+  },
+
+  toggleItem:{
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  
+  toggleLabel: {
+    marginRight: 10,
+    fontWeight: 'bold',
+    fontSize:18,
+    justifyContent : 'flex-start',
+    alignItems: 'flex-start'
+  },
+  
+  sliderContainer: {
+    marginTop: 10,
+  },
+  
+  slider: {
+    width: '100%',
+    height: 40,
+  },
+  
+  sliderLabelContainer: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  
+  sliderLabel: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color:'#9251DB',
+  },
+  
+  minMaxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 10,
+    marginTop: 5,
+  },
+  
+  minMaxLabel: {
+    fontSize: 14,
+    color: '#555',
+  },
+  
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 14, // Horizontal padding
+    paddingVertical: 15, // Vertical padding
+    fontSize: 16,
+    backgroundColor: '#fff', // White background
+    height: 'auto',
+    flexGrow: 1, // Allow it to grow as needed
+    marginBottom: 10,  // Add margin to prevent overlap
+  },
+  
+  textarea: {
+    height: 100,
+    textAlignVertical: 'top',
+    flexShrink: 0, 
+    paddingHorizontal: 14, 
+    paddingVertical: 25, 
+    backgroundColor: '#fff', 
+    marginBottom: 10,  // Add margin to avoid overlap with other inputs
+  },
+  
+  optionsContainer: {
+    justifyContent: 'flex-start',
+    marginBottom: 25, 
+  },
+  
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  
+  radioCircle: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#6C63FF',
+    marginRight: 10,
+  },
+  
+  radioSelected: {
+    backgroundColor: '#6C63FF',
+  },
+  
+  checkboxOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  
+  checkboxBox: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderColor: '#6C63FF',
+    marginRight: 10,
+  },
+  
+  checkboxSelected: {
+    backgroundColor: '#6C63FF',
+  },
+  
+  selectContainer: {
+    width: '100%',
+    height: 'auto',
+    backgroundColor: '#fff',
+    paddingHorizontal: 14, 
+    paddingVertical: 25,   
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginBottom: 10, // Add margin to prevent overlap with other fields
+  },
+  
+  purpleBtn: {
+    backgroundColor:'#9251DB',
+    paddingHorizontal: 25,
+    paddingVertical: 20,
+    color:'white',
+    borderRadius: 55,
+    flex: 1,
+    justifyContent:'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontFamily: 'Inter_700Bold',
+    fontSize: 20,
+  },
+  
+  profileList: {
+    backgroundColor: '#EEEEEE',
+    paddingVertical:15, 
+    flex: 1,
+    borderRadius:25,
+    width: '100%',
+    marginBottom: 20,
+  },
+
+  profileWrap:{
+    width:'70%',
+    textAlign:'left',
+    marginLeft: 8
+  },
+
+  name: {
+    color: '#333',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily : 'Inter_700Bold',
+  },
+
+  email:{
+    color:'#666',
+    fontWeight : 'regular',
+    fontFamily: 'Inter_400Regular',
+    fontSize: 16,
   },
 
 });

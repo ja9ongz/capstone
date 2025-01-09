@@ -5,7 +5,7 @@ import { CustomHeader } from './CustomHeader';
 import styles from '@/constants/styles';
 import { FontsLoader } from '../components/Fonts';
 
-export const Page = ({ title, content }: {title?:any, content?:any}) => {
+export const Page = ({ title, content, backurl}: {title?:any, content?:any, backurl?:any}) => {
   return (
     <SafeAreaView style={styles.container}>
       <FontsLoader>
@@ -14,16 +14,13 @@ export const Page = ({ title, content }: {title?:any, content?:any}) => {
           style={styles.imageBackground}
         >
           {/* Custom Header */}
-          <CustomHeader
-            title={title}
-            onPress={title === 'Home' ? undefined : () => console.log('Back pressed')}
-          />
+          <CustomHeader title={title} url={backurl}/>
 
           {/* Scrollable Content */}
           <ScrollView
             contentContainerStyle={{
               flexGrow: 1,
-              paddingHorizontal: 16,
+              paddingHorizontal: 15,
               paddingVertical: 10,
             }}
           >
@@ -39,3 +36,5 @@ export const Page = ({ title, content }: {title?:any, content?:any}) => {
     </SafeAreaView>
   );
 };
+
+

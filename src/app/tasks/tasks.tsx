@@ -14,6 +14,7 @@ import { RewardCard, RewardMiniCard, RewardsRow, RewardDate } from '@/components
 
 import CircularProgress from 'react-native-circular-progress-indicator';
 
+
 const MiniCardInfo = ({split, chart} : {split?:boolean, chart?:boolean}) => (
 	<>
 	{!split && (
@@ -89,37 +90,49 @@ const MiniCardInfo = ({split, chart} : {split?:boolean, chart?:boolean}) => (
 	</>
 );
 
-export default function RewardsPage() {
+export default function TasksPage() {
   return (
     <Page
-      title="Rewards"
+      title="Tasks"
       content={
         <>
           <View style={styles.container}>
             <ProfileRow img={require('@/assets/images/profile.png')} name={'Randolf Wesely'} />
-            <RewardsRow savertype={'Gold Saver'} rewardsAmt={'2 Rewards'}/>
+		
+			<Row>
+				<View style={styles.taskHeader}>
+					<Text style={styles.cardHeaderTextWhite}>Tasks Overview</Text>
+					<Text style={styles.cardSubTextWhite}>5 Tasks Pending</Text>
+				</View>
 
-            <RewardCard>
-                <Text style={styles.cardHeaderText}>Current Tasks</Text>
-                <Row>
-					<RewardMiniCard>
-						<MiniCardInfo chart/>
-					</RewardMiniCard>
-                </Row>
-				
-				<Text style={styles.cardHeaderText}>Redeem Your Rewards</Text>
-                <Row>
-					<RewardMiniCard small>
-						<MiniCardInfo split/>
-					</RewardMiniCard>
+				<View style={styles.addButton}>
+					<TextLink type={'button'} className={styles.linkButton} icon={<Ionicons name="add-outline" size={28} color={'#fff'}/>} url={'/tasks/create'} />
+				</View>
+			</Row>
 
-					<RewardMiniCard small>
-						<MiniCardInfo split/>
-					</RewardMiniCard>
-                </Row>
-				
-				<TextLink title={'View All Rewards'} icon={<Ionicons name="chevron-forward-outline" size={20}/>} url={'https://www.google.com'} />
-            </RewardCard>
+			<Row>
+				<RewardMiniCard small>
+					<MiniCardInfo split/>
+				</RewardMiniCard>
+
+				<RewardMiniCard small>
+					<MiniCardInfo split/>
+				</RewardMiniCard>
+			</Row>
+
+			<Text style={styles.cardHeaderText}>Tasks Details</Text>
+			<Row>
+				<RewardMiniCard>
+					<MiniCardInfo split chart/>
+				</RewardMiniCard>
+			</Row>
+
+			<Row>
+				<RewardMiniCard>
+					<MiniCardInfo split chart/>
+				</RewardMiniCard>
+			</Row>
+             
           </View>
           
         </>
